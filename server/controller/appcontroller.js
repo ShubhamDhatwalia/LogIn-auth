@@ -1,7 +1,6 @@
 import UserModel from "../model/user.model.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import ENV from "../config.js";
 import otpGenerator from "otp-generator";
 
 /** POST: http://localhost:8080/api/register 
@@ -107,7 +106,7 @@ export async function login(req, res) {
         userId: user._id, // Ensure you're using the correct property
         username: user.username,
       },
-      "JWT_SECRET", // Use environment variable for the secret
+      "process.env.JWT_SECRET", // Use environment variable for the secret
       { expiresIn: "24h" }
     );
 

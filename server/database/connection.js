@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
 // import { MongoMemoryServer } from 'mongodb-memory-server';
+import dotenv from "dotenv";
+dotenv.config();
 
 
 async function connect(url) {
@@ -13,8 +15,7 @@ async function connect(url) {
 
     mongoose.set('strictQuery', true);
 
-     mongoose.connect(url, {
-    })
+     mongoose.connect(url)
     console.log("Database connected");
 }
 

@@ -4,7 +4,8 @@ import morgan from 'morgan';
 import  connect  from './database/connection.js';
 import router from "./Router/route.js";
 import bodyParser from 'body-parser';
-import ENV from "./config.js"
+
+
 
 const app = express();
 
@@ -12,7 +13,7 @@ app.use(bodyParser.json({ limit: '10mb' }));    // Increase the limit as needed
 
 app.use(
   cors({
-    origin: "https://log-in-auth-eight.vercel.app", // Replace with your frontend URL
+    origin: process.env.FRONTEND, // Replace with your frontend URL
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
@@ -43,7 +44,7 @@ app.use('/api', router);
 
 //  Start Server only when valid connection is created
 
-connect(ENV.ATLAS_URI)
+connect(process.env.ATLAS_URI)
   .then(() => {
     try {
       app.listen(8080, () => {

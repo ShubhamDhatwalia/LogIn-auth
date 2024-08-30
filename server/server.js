@@ -10,11 +10,13 @@ const app = express();
 
 app.use(bodyParser.json({ limit: '10mb' }));    // Increase the limit as needed
 
-app.use(cors({
-    origin: 'https://login-app-liard-ten.vercel.app',             // Replace with your frontend URL
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization']
-}));
+app.use(
+  cors({
+    origin: "https://log-in-auth-eight.vercel.app", // Replace with your frontend URL
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 
 
 // middlewares ----
